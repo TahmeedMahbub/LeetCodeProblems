@@ -1,0 +1,52 @@
+<!-- https://leetcode.com/problems/roman-to-integer/?envType=featured-list&envId=challenges-for-new-users -->
+<?php
+
+$s  = "MCMXCIV"; // THIS IS DYNAMIC INPUT TAKEN FROM SYSTEM
+$result = 0;
+$ar = [];
+
+foreach (str_split($s) as $c) {
+    if($c == "I")
+    {
+        $val = 1;
+    }
+    else if($c == "V")
+    {
+        $val = 5;
+    }
+    else if($c == "X")
+    {
+        $val = 10;
+    }
+    else if($c == "L")
+    {
+        $val = 50;
+    }
+    else if($c == "C")
+    {
+        $val = 100;
+    }
+    else if($c == "D")
+    {
+        $val = 500;
+    }
+    else if($c == "M")
+    {
+        $val = 1000;
+    }
+    $ar[] = $val;
+}
+
+foreach($ar as $key => $a)
+{
+    if(!isset($ar[$key + 1]) || (isset($ar[$key + 1]) && $ar[$key + 1] <= $a))
+    {
+        $result += $a;
+    }
+    else
+    {
+        $result -= $a;
+    }
+}
+
+return $result;
