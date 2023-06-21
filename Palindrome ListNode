@@ -1,0 +1,23 @@
+<!-- https://leetcode.com/problems/palindrome-linked-list/submissions/976165803/?envType=featured-list&envId=challenges-for-new-users -->
+<?php
+
+$head = [1,2,3,5,6,3,2,1]; // THIS IS SYSTEM GIVEN INPUT
+$result = true;
+
+$listArray = [];
+$current = $head;
+while ($current != null) {
+    $listArray[] = $current->val;
+    $current = $current->next;
+}
+
+foreach($listArray as $key => $h)
+{
+    if (ceil(count($listArray) / 2) >= $key) {
+        if ($h != $listArray[count($listArray) - 1 - $key]) {
+            $result = false;
+        }
+    }
+}
+
+echo $result;
